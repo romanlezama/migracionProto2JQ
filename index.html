@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Migrando Prototype - jQuery</title>
+	<script type="text/javascript" src="js/prototype.js"></script>
+	<script type="text/javascript" src="js/funciones.js"></script>
+	<script type="text/javascript" src="js/generals.js"></script>
+</head>
+<body style="font-family: tahoma; font-size: 11pt;">
+	<h1>Todo lo que está aquí está en Prototype ver en <a href="index-jq.html">JQuery</a></h1>
+	<div id="loading" style="height: 665px; display: none;"><h1>Loading...</h1></div>
+	<div>
+		<!-- Aquí van las funciones a probar -->
+		<a onclick="editar('1454952004085')" href="javascript: void(0)"> Editar ...Ok </a> </br></br>
+
+		<a onclick="ver('1454952004085')" href="javascript: void(0)"> Ver ...Ok </a> </br></br>
+
+		<a onclick="eliminar('1456420139008','4')" href="javascript: void(0)"> Eliminar ...Ok </a> </br></br>
+
+		<a onclick="corregido('1454952004085','6')" href="javascript: void(0)"> Corregido...Ok</a> </br></br>	
+
+		<a onclick="visualizaURL(
+            'php/MenuJuicios.php' ,
+            {
+                parametros: 'selected_item=' + selected_item,
+                contenedor: 'submenu'
+            }
+        );" href="javascript: void(0)"> visualizaURL</a> </br></br>
+
+
+		<!-- Fin prueba de funciones -->
+
+		<!-- Divs necesarios y utilizados en SICOR -->
+		<div id="content" style="background-color: #dbdbdb; padding-left: 10px;">Aquí se pintará la respuesta en div "content"</div>
+		<div id="lista_acuerdos" style="background-color: #C3DAF2; padding-left: 10px;"> Aquí se pintará la respuesta en div "lista_acuerdos" </div>
+
+		<div id="popupBackground" style="display:none;">
+    		<div id="popupWindow" >
+        		<div id="popupTitleBar">
+        			<div id="popupTitle"></div>
+            		<div id="popupClose">
+                		<a href="javascript: void(0)" onclick="hidePopUp({})">Cerrar</a>
+           			</div>
+            		<div style="clear:both"></div>
+			    </div>
+			        <div id="popupContent">
+			            Acorde al MANUAL DE USUARIO dirigido al público en general ​​ 
+			            http://www.poderjudicialdf.gob.....
+			        </div>
+			    </div>
+		</div>
+		<div id="page">
+		    <div id="header">
+		        <div>
+		            <div style="float:right; margin: 0; padding: 5px 30px">
+		               <!-- Logo SICOR -->
+		            </div>
+		            <div style="float:left; margin: 0; padding: 5px 30px;">
+		               <!-- Logo Tribunal-->
+		            </div>
+		        </div>
+		        <div style="clear: both"></div>
+		    </div>
+
+
+		    <div id="menu" style="display:none">
+		    </div>
+		    <div id="content" style="width: 100%;text-align: center">
+		    	<!-- Aquí dentro iba el form de autenticación -->        
+		    </div>
+		    <div id="footer">
+		        
+		    </div>
+		</div>
+		<!-- Fin Divs -->
+	</div>
+</body>
+</html>
