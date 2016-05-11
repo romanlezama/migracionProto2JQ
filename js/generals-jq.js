@@ -64,7 +64,8 @@ function visualizaUrl(url, parametros, div)
                 type: 'post',
                 data: parametros,
                 success: function(respuesta){
-                    try{$("#"+div).html(respuesta)} catch(err){};
+                    var responseText = respuesta || "No hubo respuesta... por favor intentelo mas tarde";
+                    try{$("#"+div).html(responseText)} catch(err){};
                     $("#loading").hide();
                 },
                 error: function(){
@@ -97,7 +98,7 @@ function visualizaURL(url, opciones)
         var accionPosterior = __$AnalizaValor(opciones, "accionPosterior");
         var loading = __$AnalizaValor(opciones, "loading");
         
-        if(!parametros.empty() && !parametros.blank()){
+        if( !$.isEmptyObject( parametros ) && !$.isBlank( parametros ) ){
             if(parametros.startsWith("&") || parametros.startsWith("?")){
                 parametros = parametros.substr(1);
             }
@@ -105,33 +106,33 @@ function visualizaURL(url, opciones)
         }
         parametros+= 'rand=' + Math.random();
         
-        if(!url.empty() && !url.blank()){
+        if(!$.isEmptyObject( url ) && !$.isBlank( url ) ){
             if(loading){
-                $("loading").style.height = $("page").offsetHeight+"px";
-                $(loading).show();
+                $("#loading").height = document.getElementById("page").offsetHeight+"px";
+                $("#"+loading).show();
             }
+
             var opcPrototype = {
-                method: 'post',
-                onSuccess: function(transport){
-                    var responseText = transport.responseText || "No hubo respuesta... por favor intentelo mas tarde";
-                    try{$(contenedor).update(responseText)}catch(err){};
-                    if(loading){$(loading).hide();}
+                url     : url,
+                method  : 'post',
+                success : function(transport){
+                    var responseText = transport || "No hubo respuesta... por favor intentelo mas tarde";
+                    try{ $( "#"+contenedor ).html( responseText ); }catch( err ){};
+                    if( $( "#"+loading ) ){ $( "#"+loading ).hide(); }
                     if(accionPosterior){
-                        try{
-                            accionPosterior();
-                        }catch(error){}
+                        try{ accionPosterior(); }catch(error){}
                     }
                 },
-                onFailure: function(){ 
-                    if(loading){$(loading).hide();}
-                    alert('Por favor intentelo mas tarde');
+                error : function(){ 
+                    if( $("#"+loading) ){ $( "#"+loading ).hide(); }
+                    alert('Por favor inténtelo mas tarde');
                 }
             }
             if(parametros!=undefined){
-                opcPrototype.parameters = parametros;
+                opcPrototype[ 'data' ] = parametros;
             }
             
-            new Ajax.Request(url, opcPrototype);
+            $.ajax( opcPrototype );
             
         }
     }
@@ -156,14 +157,14 @@ function __$AnalizaValor(coleccion, parametro, defecto) {
 }
 
 function showSelects(view){
-    var selects = $('content').getElementsByTagName('select');
-    var size=selects.length;
-    for( i=0;i<size;++i ){
-        if(view)
-            selects[i].show();
-        else
-            selects[i].hide();
-    }
+    var selects = $('select');
+    var size=selects.length; //Quitar despues de pruebas.
+    console.log("Size: "+size + " view: "+view);
+    if(view)
+        $.each(selects,function(){selects.show(); /*console.log(val)*/} );
+    else
+        $.each(selects,function(){selects.hide(); /*console.log(val)*/} );
+    
 }
 
 function showPopUp( opc ){
@@ -365,3 +366,10 @@ function limitaCaracteres(area,e,longitud) {
 function mayusculas(field){
     field.value = field.value.toUpperCase();
 }
+
+/* Se crea función especial de jQuery para reemplazar al .blank() de Prototype */
+(function($){
+  $.isBlank = function(obj){
+    return(!obj || $.trim(obj) === "");
+  };
+})(jQuery);

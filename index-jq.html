@@ -8,19 +8,100 @@
 	<script type="text/javascript" src="js/generals-jq.js"></script>
 </head>
 <body style="font-family: tahoma; font-size: 11pt;">
-	<h1>Todo lo que está aquí está en JQuery ver en <a href="index.html">Prototype</a></h1>
-	<div id="loading" style="height: 665px; display: none;"><h1>Loading...</h1></div>
-	<div id="page">
+	<h1>Todo lo que está aquí está en jQuery ver en <a href="index.html">Prototype</a></h1>
+	
+	<div>
 		<!-- Aquí van las funciones a probar -->
-		<a onclick="editar('1454952004085')" href="javascript: void(0)"> Editar ...Ok</a> </br></br>
-		<a onclick="ver('1454952004085')" href="javascript: void(0)"> Ver ...Ok</a> </br></br>
-		<a onclick="eliminar('1456420139008','4')" href="javascript: void(0)"> Eliminar ...Ok</a> </br></br>
-		<a onclick="corregido('1454952004085','6')" href="javascript: void(0)"> Corregido ...Ok</a> </br></br>
+		<a onclick="editar('1454952004085')" href="javascript: void(0)"> Editar ...Ok </a> </br></br>
 
+		<a onclick="ver('1454952004085')" href="javascript: void(0)"> Ver ...Ok </a> </br></br>
+
+		<a onclick="eliminar('1456420139008','4')" href="javascript: void(0)"> Eliminar ...Ok </a> </br></br>
+
+		<a onclick="corregido('1454952004085','6')" href="javascript: void(0)"> Corregido...Ok</a> </br></br>	
+
+		<a onclick="visualizaURL('php/MenuJuicios.php' , {parametros: 'selected_item=1', contenedor: 'content'});" href="javascript: void(0)"> visualizaURL (generals.js) ...Ok</a> </br></br>
+
+		<a onclick="showSelects(false)" href="javascript: void(0)"> showSelects</a> </br></br>
 
 		<!-- Fin prueba de funciones -->
-		<div id="content" style="background-color: #dbdbdb; padding-left: 10px;">Aquí se pintará la respuesta en div "content"</div>
+
+		<!-- Divs necesarios y utilizados en SICOR -->
+		<div id="loading" style="height: 665px; display: none;"><h1>Loading...</h1></div>
+				
 		<div id="lista_acuerdos" style="background-color: #C3DAF2; padding-left: 10px;"> Aquí se pintará la respuesta en div "lista_acuerdos" </div>
+
+		<div id="popupBackground" style="display:none;">
+    		<div id="popupWindow" >
+        		<div id="popupTitleBar">
+        			<div id="popupTitle"></div>
+            		<div id="popupClose">
+                		<a href="javascript: void(0)" onclick="hidePopUp({})">Cerrar</a>
+           			</div>
+            		<div style="clear:both"></div>
+			    </div>
+			        <div id="popupContent">
+			            Acorde al MANUAL DE USUARIO dirigido al público en general ​​ 
+			            http://www.poderjudicialdf.gob.....
+			        </div>
+			    </div>
+		</div>
+
+		<!-- Esta es una ventana que sirve como popup para vistas previas -->
+		<div id="previewBackground" style="display:none;">
+		    <div id="previewWindow" >
+		        <div id="previewTitleBar">
+		            <div id="previewTitle"></div>
+		            <div id="previewClose">
+		                <a href="javascript: void(0)" onclick="hidePreview({})">Cerrar</a>
+		            </div>
+		            <div style="clear:both"></div>
+		        </div>
+		        <div id="previewContent">html</div>
+		    </div>
+		</div>
+
+		<!--
+	    Dentro de esta ventana se envian los datos que se quieren imprimir.
+	    es invisible el resto del tiempo -->
+		<div id="printWindow" style="display:none"></div>
+
+		<div id="page">
+			<!-- Logos de sicor y tribunal -->
+		    <div id="header">    
+		    </div>
+
+		    <!-- menu superior -->
+		    <div id="menu">
+		    </div>
+		    <div style="clear:both"></div>
+
+		    <!-- menu lateral -->
+		    <div id="submenu">
+		    </div>
+
+		    <!-- área de contenido -->
+		    <div id="content">
+		    	<select id="select1">
+				  <option value="op1">Opción 1-1</option>
+				  <option value="op2">Opción 1-2</option>
+				  <option value="op3">Opción 1-3</option>
+				</select>
+
+				<select id="select2">
+				  <option value="op1">Opción 2-1</option>
+				  <option value="op2">Opción 2-2</option>
+				  <option value="op3">Opción 2-3</option>
+				</select>
+		    </div>
+
+		    <!-- Pie de la pagina  -->
+		    <div style="clear:both"></div>
+		    <div id="footer">
+		        
+		    </div>		    
+		</div>
+		<!-- Fin Divs -->
 	</div>
 </body>
 </html>

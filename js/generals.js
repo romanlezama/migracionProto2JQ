@@ -99,6 +99,8 @@ function visualizaURL(url, opciones)
         var contenedor = __$AnalizaValor(opciones, "contenedor", "content");
         var accionPosterior = __$AnalizaValor(opciones, "accionPosterior");
         var loading = __$AnalizaValor(opciones, "loading");
+
+        console.log("Parametros:"+parametros + "  Contenedor: "+contenedor + "  accionPosterior: " + accionPosterior + "  loading: "+loading);
         
         if(!parametros.empty() && !parametros.blank()){
             if(parametros.startsWith("&") || parametros.startsWith("?")){
@@ -161,11 +163,12 @@ function __$AnalizaValor(coleccion, parametro, defecto) {
 function showSelects(view){
     var selects = $('content').getElementsByTagName('select');
     var size=selects.length;
+    console.log("Size: "+size + " view: "+view);
     for( i=0;i<size;++i ){
         if(view)
-            selects[i].show();
+            {selects[i].show(); console.log(selects[i]);}
         else
-            selects[i].hide();
+            {selects[i].hide();console.log(selects[i]);}
     }
 }
 
