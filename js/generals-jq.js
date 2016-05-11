@@ -106,15 +106,24 @@ function visualizaURL(url, opciones)
         }
         parametros+= 'rand=' + Math.random();
         
+<<<<<<< HEAD
         if(!$.isEmptyObject( url ) && !$.isBlank( url ) ){
+=======
+        if(!$.isEmptyObject( url ) && !$.isBlank( url )){
+>>>>>>> branch 'master' of https://github.com/romanlezama/migracionProto2JQ.git
             if(loading){
                 $("#loading").height = document.getElementById("page").offsetHeight+"px";
                 $("#"+loading).show();
             }
 
             var opcPrototype = {
+<<<<<<< HEAD
                 url     : url,
                 method  : 'post',
+=======
+            	url 	: url,
+                method 	: 'post',
+>>>>>>> branch 'master' of https://github.com/romanlezama/migracionProto2JQ.git
                 success : function(transport){
                     var responseText = transport || "No hubo respuesta... por favor intentelo mas tarde";
                     try{ $( "#"+contenedor ).html( responseText ); }catch( err ){};

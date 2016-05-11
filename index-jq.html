@@ -11,6 +11,9 @@
 	<h1>Todo lo que está aquí está en jQuery ver en <a href="index.html">Prototype</a></h1>
 	
 	<div>
+	<h1>Todo lo que está aquí está en JQuery ver en <a href="index.html">Prototype</a></h1>
+	<div id="loading" style="height: 665px; display: none;"><h1>Loading...</h1></div>
+	<div id="page" style="height: 250px;" >
 		<!-- Aquí van las funciones a probar -->
 		<a onclick="editar('1454952004085')" href="javascript: void(0)"> Editar ...Ok </a> </br></br>
 
@@ -21,9 +24,9 @@
 		<a onclick="corregido('1454952004085','6')" href="javascript: void(0)"> Corregido...Ok</a> </br></br>	
 
 		<a onclick="visualizaURL('php/MenuJuicios.php' , {parametros: 'selected_item=1', contenedor: 'content'});" href="javascript: void(0)"> visualizaURL (generals.js) ...Ok</a> </br></br>
+		<a onclick="visualizaURL('php/MenuJuicios.php' , {parametros: '?selected_item=1', contenedor: 'submenu', loading: 'loading'});" href="javascript: void(0)"> visualizaURL</a> </br></br>
 
 		<a onclick="showSelects(false)" href="javascript: void(0)"> showSelects</a> </br></br>
-
 		<!-- Fin prueba de funciones -->
 
 		<!-- Divs necesarios y utilizados en SICOR -->
