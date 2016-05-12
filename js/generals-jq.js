@@ -104,26 +104,18 @@ function visualizaURL(url, opciones)
             }
             parametros+="&";
         }
-        parametros+= 'rand=' + Math.random();
-        
-<<<<<<< HEAD
+        parametros+= 'rand=' + Math.random();    
+
         if(!$.isEmptyObject( url ) && !$.isBlank( url ) ){
-=======
-        if(!$.isEmptyObject( url ) && !$.isBlank( url )){
->>>>>>> branch 'master' of https://github.com/romanlezama/migracionProto2JQ.git
             if(loading){
                 $("#loading").height = document.getElementById("page").offsetHeight+"px";
                 $("#"+loading).show();
             }
 
             var opcPrototype = {
-<<<<<<< HEAD
+
                 url     : url,
                 method  : 'post',
-=======
-            	url 	: url,
-                method 	: 'post',
->>>>>>> branch 'master' of https://github.com/romanlezama/migracionProto2JQ.git
                 success : function(transport){
                     var responseText = transport || "No hubo respuesta... por favor intentelo mas tarde";
                     try{ $( "#"+contenedor ).html( responseText ); }catch( err ){};
@@ -166,17 +158,16 @@ function __$AnalizaValor(coleccion, parametro, defecto) {
 }
 
 function showSelects(view){
-    var selects = $('select');
-    var size=selects.length; //Quitar despues de pruebas.
-    console.log("Size: "+size + " view: "+view);
+    var selects = $( "#content>select" );
     if(view)
-        $.each(selects,function(){selects.show(); /*console.log(val)*/} );
+        $.each(selects,function(){selects.show();} );
     else
-        $.each(selects,function(){selects.hide(); /*console.log(val)*/} );
+        $.each(selects,function(){selects.hide();} );
     
 }
 
 function showPopUp( opc ){
+    //console.log("accionPrevia:"+opc.accionPrevia+ "  top:"+opc.top + "  width:"+opc.width + "  height:"+ opc.height + "  titulo:"+opc.titulo);
     if( opc.accionPrevia ){
         opc.accionPrevia();
     }
@@ -187,25 +178,25 @@ function showPopUp( opc ){
     var top = 100;
     if(opc.top)
         top = opc.top;
-    $('popupWindow').style.top = (document.body.scrollTop + top) + "px";
+    $('#popupWindow').top = (document.body.scrollTop + top) + "px";
 
     if( opc ){
         if(opc.width)
-            $('popupWindow').style.width = opc.width;
+            $('#popupWindow').width = opc.width;
         if(opc.height)
-            $('popupWindow').style.height = opc.height;
+            $('#popupWindow').height = opc.height;
         if(opc.titulo)
-            $('popupTitle').innerHTML=opc.titulo;
+            $('#popupTitle').html(opc.titulo);            
     }
 
-    $('popupBackground').show();
+    $('#popupBackground').show();
 
 }
 
 function hidePopUp( opc ){
-    $('popupBackground').hide();
-    $('popupContent').innerHTML = "";
-    $('popupWindow').style.width = '600px';
+    $('#popupBackground').hide();
+    $('#popupContent').html("");
+    $('#popupWindow').width = '600px';
 
     if( opc ){
         if( opc.accionPosterior ){
@@ -215,10 +206,10 @@ function hidePopUp( opc ){
     
     if( is_ie6 )
         showSelects(true);
-
 }
 
 function showPreview( opc ){
+    //console.log("accionPrevia:"+opc.accionPrevia+ "  top:"+opc.top + "  width:"+opc.width + "  height:"+ opc.height + "  titulo:"+opc.titulo);
     if( opc.accionPrevia ){
         opc.accionPrevia();
     }
@@ -229,25 +220,25 @@ function showPreview( opc ){
     var top = 100;
     if(opc.top)
         top = opc.top;
-    $('previewWindow').style.top = (document.body.scrollTop + top) + "px";
+    $('#previewWindow').top = (document.body.scrollTop + top) + "px";
 
     if( opc ){
         if(opc.width)
-            $('previewWindow').style.width = opc.width;
+            $('#previewWindow').width = opc.width;
         if(opc.height)
-            $('previewWindow').style.height = opc.height;
+            $('#previewWindow').height = opc.height;
         if(opc.titulo)
-            $('previewTitle').innerHTML=opc.titulo;
+            $('#previewTitle').html(opc.titulo);
     }
 
-    $('previewBackground').show();
+    $('#previewBackground').show();
 
 }
 
 function hidePreview( opc ){
-    $('previewBackground').hide();
-    $('previewContent').innerHTML = "";
-    $('previewWindow').style.width = '600px';
+    $('#previewBackground').hide();
+    $('#previewContent').html("");
+    $('#previewWindow').width = '600px';
 
     if( opc ){
         if( opc.accionPosterior ){
@@ -267,19 +258,20 @@ function showPrintWindow( opc ){
 
     if( opc ){
         if(opc.width)
-            $('printWindow').style.width = opc.width;
+            $('#printWindow').width = opc.width;
     }
 
-    $('page').hide();
-    $('printWindow').show();
+    $('#page').hide();
+    $('#printWindow').show();
+    console.log("accionPrevia: "+opc.accionPrevia + "  width:"+opc.width);
 
 }
 
 function hidePrintWindow( opc ){
-    $('printWindow').hide();
-    $('page').show();
-    $('printWindow').innerHTML = "";
-    $('printWindow').style.width = '950px';
+    $('#printWindow').hide();
+    $('#page').show();
+    $('#printWindow').html("");
+    $('#printWindow').width = '950px';
     if( opc ){
         if( opc.accionPosterior ){
             opc.accionPosterior();
@@ -288,8 +280,9 @@ function hidePrintWindow( opc ){
 }
 
 function clearPage(){
-    $('menu').innerHTML = '';
-    $('submenu').innerHTML = '';
+    $('#menu').html("");
+    $('#submenu').html("");
+    //console.log("Haciendo clearPage");
 }
 
 function $RF(el, radioGroup) {

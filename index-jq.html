@@ -7,13 +7,10 @@
 	<script type="text/javascript" src="js/funciones.js"></script>
 	<script type="text/javascript" src="js/generals-jq.js"></script>
 </head>
-<body style="font-family: tahoma; font-size: 11pt;">
-	<h1>Todo lo que está aquí está en jQuery ver en <a href="index.html">Prototype</a></h1>
-	
+<body style="font-family: tahoma; font-size: 11pt;">	
 	<div>
 	<h1>Todo lo que está aquí está en JQuery ver en <a href="index.html">Prototype</a></h1>
-	<div id="loading" style="height: 665px; display: none;"><h1>Loading...</h1></div>
-	<div id="page" style="height: 250px;" >
+	<div style="height: 250px;" >
 		<!-- Aquí van las funciones a probar -->
 		<a onclick="editar('1454952004085')" href="javascript: void(0)"> Editar ...Ok </a> </br></br>
 
@@ -23,10 +20,23 @@
 
 		<a onclick="corregido('1454952004085','6')" href="javascript: void(0)"> Corregido...Ok</a> </br></br>	
 
-		<a onclick="visualizaURL('php/MenuJuicios.php' , {parametros: 'selected_item=1', contenedor: 'content'});" href="javascript: void(0)"> visualizaURL (generals.js) ...Ok</a> </br></br>
-		<a onclick="visualizaURL('php/MenuJuicios.php' , {parametros: '?selected_item=1', contenedor: 'submenu', loading: 'loading'});" href="javascript: void(0)"> visualizaURL</a> </br></br>
+		<a onclick="visualizaURL('php/MenuJuicios.php' , {parametros: 'selected_item=1', contenedor: 'content'});" href="javascript: void(0)"> visualizaURL (generals.js) ...Ok</a> </br></br>	
 
-		<a onclick="showSelects(false)" href="javascript: void(0)"> showSelects</a> </br></br>
+		<a onclick="showSelects(false)" href="javascript: void(0)"> showSelects ...Ok</a> </br></br>
+
+		<a onclick="showPopUp({top: '100px', width: '720px', height: '100px', titulo:'Este es el titulo del popUp'});" href="javascript: void(0)"> showPopUp ...Ok</a> </br></br>	
+
+		<a onclick="hidePopUp({})" href="javascript: void(0)"> --> hidePopUp ...Ok</a> </br></br>
+
+		<a onclick="showPreview({top: '100px', width: '720px', height: '100px', titulo:'Este es el titulo del Preview'})" href="javascript: void(0)"> Show preview ..Ok</a> </br></br>
+
+		<a onclick="hidePreview({})" href="javascript: void(0)"> -->hidePreview ...Ok</a> </br></br>
+
+		<a onclick="showPrintWindow({width: '720px'});" href="javascript: void(0)"> showPrintWindow ...Ok</a> </br></br>
+
+		<a onclick="hidePrintWindow( {} )" href="javascript: void(0)"> --> hidePrintWindow ...Ok</a> </br></br>
+
+		<a onclick="clearPage()" href="javascript: void(0)"> clearPage ...Ok</a> </br></br>
 		<!-- Fin prueba de funciones -->
 
 		<!-- Divs necesarios y utilizados en SICOR -->
@@ -44,8 +54,7 @@
             		<div style="clear:both"></div>
 			    </div>
 			        <div id="popupContent">
-			            Acorde al MANUAL DE USUARIO dirigido al público en general ​​ 
-			            http://www.poderjudicialdf.gob.....
+			            Aquí va el contenido del popUp.
 			        </div>
 			    </div>
 		</div>
@@ -60,28 +69,26 @@
 		            </div>
 		            <div style="clear:both"></div>
 		        </div>
-		        <div id="previewContent">html</div>
+		        <div id="previewContent">Aquí va el contenido del Preview</div>
 		    </div>
 		</div>
 
 		<!--
 	    Dentro de esta ventana se envian los datos que se quieren imprimir.
 	    es invisible el resto del tiempo -->
-		<div id="printWindow" style="display:none"></div>
+		<div id="printWindow" style="display:none">Aquí va el contenido de la informacion a imprimir printWindow</div>
 
-		<div id="page">
+		<div id="page"> Aquí esta el div "page"
 			<!-- Logos de sicor y tribunal -->
 		    <div id="header">    
 		    </div>
 
 		    <!-- menu superior -->
-		    <div id="menu">
-		    </div>
+		    <div id="menu">Aquí está el div "menu" </div>
 		    <div style="clear:both"></div>
 
 		    <!-- menu lateral -->
-		    <div id="submenu">
-		    </div>
+		    <div id="submenu">Aquí esta el div "submenu" </div>
 
 		    <!-- área de contenido -->
 		    <div id="content">

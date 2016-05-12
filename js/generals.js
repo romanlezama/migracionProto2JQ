@@ -162,17 +162,17 @@ function __$AnalizaValor(coleccion, parametro, defecto) {
 
 function showSelects(view){
     var selects = $('content').getElementsByTagName('select');
-    var size=selects.length;
-    console.log("Size: "+size + " view: "+view);
+    var size=selects.length;    
     for( i=0;i<size;++i ){
         if(view)
-            {selects[i].show(); console.log(selects[i]);}
+            selects[i].show();
         else
-            {selects[i].hide();console.log(selects[i]);}
+            selects[i].hide();
     }
 }
 
 function showPopUp( opc ){
+    //console.log("accionPrevia:"+opc.accionPrevia+ "  top:"+opc.top + "  width:"+opc.width + "  height:"+ opc.height + "  titulo:"+opc.titulo);
     if( opc.accionPrevia ){
         opc.accionPrevia();
     }
@@ -199,8 +199,8 @@ function showPopUp( opc ){
 }
 
 function hidePopUp( opc ){
-    $('popupBackground').hide();
     $('popupContent').innerHTML = "";
+    $('popupBackground').hide();
     $('popupWindow').style.width = '600px';
 
     if( opc ){
@@ -215,6 +215,7 @@ function hidePopUp( opc ){
 }
 
 function showPreview( opc ){
+    //console.log("accionPrevia:"+opc.accionPrevia+ "  top:"+opc.top + "  width:"+opc.width + "  height:"+ opc.height + "  titulo:"+opc.titulo);
     if( opc.accionPrevia ){
         opc.accionPrevia();
     }
@@ -268,7 +269,7 @@ function showPrintWindow( opc ){
 
     $('page').hide();
     $('printWindow').show();
-
+    //console.log("accionPrevia: "+opc.accionPrevia + "  width:"+opc.width);
 }
 
 function hidePrintWindow( opc ){
@@ -286,6 +287,7 @@ function hidePrintWindow( opc ){
 function clearPage(){
     $('menu').innerHTML = '';
     $('submenu').innerHTML = '';
+    //console.log("Haciendo clearPage");
 }
 // ¿?
 function $RF(el, radioGroup) {
