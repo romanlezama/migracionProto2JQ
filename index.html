@@ -9,7 +9,7 @@
 </head>
 <body style="font-family: tahoma; font-size: 11pt;">	
 	<div>
-	<h1>Todo lo que está aquí está en Prototype ver en <a href="index-jq.html">jQuery</a></h1>
+	<h1 id="encabezado">Todo lo que está aquí está en Prototype ver en <a href="index-jq.html">jQuery</a></h1>
 	<div style="height: 250px;" >
 		<!-- Aquí van las funciones a probar -->
 		<a onclick="editar('1454952004085')" href="javascript: void(0)"> Editar ...Ok </a> </br></br>
@@ -38,6 +38,63 @@
 
 		<a onclick="clearPage()" href="javascript: void(0)"> clearPage </a> </br></br>
 
+		<a onclick="imprimir()" href="javascript: void(0)"> Imprimir </a> </br></br>
+
+		<input type="text" name="input" onkeydown="ejecutaMiFuncion()"> checkShortcut:   
+			<script type="text/javascript">
+			function ejecutaMiFuncion()
+				{
+					result = checkShortcut()
+					console.log("Valor devuelto: "+ result);
+				}
+			</script><br>
+		</input>
+
+		<a onclick="irA('encabezado')" href="javascript: void(0)"> irA </a> </br></br>
+
+		<a onclick="crearFecha('2016/05/10')" href="javascript: void(0)"> crearFecha</a> </br></br>
+
+		<a onclick="ejecutaMiFuncion2()" href="javascript: void(0)"> fechaMysql </a>
+			<script type="text/javascript">
+			function ejecutaMiFuncion2()
+				{
+					result = fechaMysql(crearFecha('2016/05/10'));
+					console.log("Valor devuelto: "+ result);
+				}
+			</script><br><br>
+
+		<a onclick="ejecutaDiffFecha()" href="javascript: void(0)"> diffFecha </a>
+			<script type="text/javascript">
+			function ejecutaDiffFecha()
+				{
+					var result = difFecha(crearFecha('2016/05/10'), crearFecha('2016/05/20'));
+					console.log("Diferencia: "+ result);
+				}
+			</script><br><br>
+
+		<div> limitaCaracteres
+			<textarea id="areaTexto" onchange="return limitaCaracteres(this,event,10)" onkeypress="return limitaCaracteres(this,event,10)"></textarea>
+		</div><br>
+
+		<a onclick="mayusculas(areaTexto)" href="javascript: void(0)"> mayusculas </a> <br><br>
+
+
+		<form id="formularioColor">
+		    <input type="radio" name="grupoColor" value="Rojo"> Rojo<br>
+			<input type="radio" name="grupoColor" value="Verde"> Verde <br>
+			<input type="radio" name="grupoColor" value="Amarillo"> Amarillo<br>
+			<input type="radio" name="grupoColor" value="Azul"> Azul<br>
+
+		</form>
+
+		<a onclick="ejecutaRF()" href="javascript: void(0)"> $RF </a>
+			<script type="text/javascript">
+			function ejecutaRF()
+				{
+					var result = $RF('formularioColor', 'grupoColor');
+					console.log("Resultado: "+ result);
+				}
+			</script><br><br>
 		<!-- Fin prueba de funciones -->
 
 		<!-- Divs necesarios y utilizados en SICOR -->
@@ -109,7 +166,6 @@
 		    <!-- Pie de la pagina  -->
 		    <div style="clear:both"></div>
 		    <div id="footer">
-		        
 		    </div>		    
 		</div>
 		<!-- Fin Divs -->

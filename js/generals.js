@@ -16,7 +16,7 @@ function rtrim(stringToTrim) {
     return stringToTrim.replace(/\s+$/,"");
 }
 
-var iexp = document.all ? true:false; // Para detectar si la consulta viene de Internet Explores.
+var iexp = document.all ? true:false; // Para detectar si la consulta viene de Internet Explorer.
 var is_ie6 = ( window.external && typeof window.XMLHttpRequest == "undefined" );
 
 //Campos númericos
@@ -291,6 +291,8 @@ function clearPage(){
 }
 // ¿?
 function $RF(el, radioGroup) {
+    console.log("el:"+el+"  radioGroup: "+radioGroup); //PRUEBA
+    
     if($(el).type && $(el).type.toLowerCase() == 'radio') {
         radioGroup = $(el).name;
         el = $(el).form;
@@ -313,6 +315,9 @@ function imprimir() {
 }
 
 function checkShortcut(){
+    console.log("iexp: "+iexp);
+    //console.log(event.which);
+    //console.log(event.keyCode); //keyCode no compatible con Firefox, se sustituye por which
     if(iexp &&(event.keyCode==8 || event.keyCode==13)){
         return  document.activeElement.tagName=='INPUT' ||
                 document.activeElement.tagName=='TEXTAREA';
@@ -321,6 +326,7 @@ function checkShortcut(){
 }
 
 function irA(elemID) {
+    console.log("Ir a:  "+elemID);
     var offsetTrail = document.getElementById(elemID);
     var offsetLeft = 0;
     var offsetTop = 0;
@@ -335,6 +341,7 @@ function irA(elemID) {
     }
     window.scrollTo(offsetLeft,offsetTop)
 }
+
 function crearFecha(sFecha){
     var anio =  parseInt(sFecha.substr(0,4));
     var mes = sFecha.substr(5,2);
@@ -346,10 +353,13 @@ function crearFecha(sFecha){
         dia = dia.substr(1,1);
     dia = parseInt(dia);
     var dFecha = new Date( anio, mes,dia );
+    console.log("Anio:"+anio+"  mes:"+mes+"  dia: "+dia+ "     Fecha: "+dFecha); //Prueba
     return dFecha;
+
 }
 
 function fechaMysql(dFecha){
+    console.log("dFecha antes de MySQL: "+dFecha); //PRUEBA
     var mes = dFecha.getMonth()+1;
     var dia = dFecha.getDate();
     return dFecha.getFullYear() + '-' +
@@ -357,7 +367,7 @@ function fechaMysql(dFecha){
            (dia<10 ? ('0' + dia) : dia);
 }
 
-function difFecha(iFecha, fFecha){
+function difFecha(iFecha, fFecha){    
     return (Math.floor( (fFecha.getTime()-iFecha.getTime()) / (1000 * 60 * 60 * 24) ));
 }
 
@@ -372,4 +382,5 @@ function limitaCaracteres(area,e,longitud) {
 
 function mayusculas(field){
     field.value = field.value.toUpperCase();
+    console.log(field.value);//PRUEBA
 }

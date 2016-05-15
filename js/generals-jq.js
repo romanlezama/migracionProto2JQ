@@ -286,17 +286,22 @@ function clearPage(){
 }
 
 function $RF(el, radioGroup) {
-    if($(el).type && $(el).type.toLowerCase() == 'radio') {
-        radioGroup = $(el).name;
-        el = $(el).form;
-    } else if ($(el).tagName.toLowerCase() != 'form') {
+    console.log("el:"+el+"  radioGroup: "+radioGroup); //PRUEBA
+    
+    if($('#'+el).type && $("#"+el).type.toLowerCase() == 'radio') {
+        radioGroup = $("#"+el).name;
+        el = $("#"+el).form;
+    } else if ($('#'+el)[0].tagName.toLowerCase() != 'form') {
         return false;
     }
 
-    var checked = $(el).getInputs('radio', radioGroup).find(
+    //var checked = $("#formularioColor>input").val();
+
+    var checked = $("#"+el+">input")[0].find("checked"); /*.find(
         function(re) {return re.checked;}
-    );
-    return (checked) ? $F(checked) : null;
+    );   */
+    console.log("Todos los input: "+checked);
+    return (checked) ? checked.value : null;
 }
 
 
@@ -308,6 +313,10 @@ function imprimir() {
 }
 
 function checkShortcut(){
+    console.log("iexp: "+iexp);
+    //console.log(event.which);
+    //console.log(event.keyCode); //keyCode no compatible con Firefox, se sustituye por which    
+    //iexp=true;
     if(iexp &&(event.keyCode==8 || event.keyCode==13)){
         return  document.activeElement.tagName=='INPUT' ||
                 document.activeElement.tagName=='TEXTAREA';
@@ -316,6 +325,7 @@ function checkShortcut(){
 }
 
 function irA(elemID) {
+    console.log("Ir a:  "+elemID);
     var offsetTrail = document.getElementById(elemID);
     var offsetLeft = 0;
     var offsetTop = 0;
@@ -341,10 +351,12 @@ function crearFecha(sFecha){
         dia = dia.substr(1,1);
     dia = parseInt(dia);
     var dFecha = new Date( anio, mes,dia );
+   console.log("Anio:"+anio+"  mes:"+mes+"  dia: "+dia+ "     Fecha: "+dFecha); //Prueba
     return dFecha;
 }
 
 function fechaMysql(dFecha){
+    console.log("dFecha antes de MySQL: "+dFecha); //PRUEBA
     var mes = dFecha.getMonth()+1;
     var dia = dFecha.getDate();
     return dFecha.getFullYear() + '-' +
@@ -367,6 +379,7 @@ function limitaCaracteres(area,e,longitud) {
 
 function mayusculas(field){
     field.value = field.value.toUpperCase();
+    console.log(field.value);//PRUEBA
 }
 
 /* Se crea función especial de jQuery para reemplazar al .blank() de Prototype */
