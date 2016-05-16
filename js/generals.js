@@ -292,14 +292,12 @@ function clearPage(){
 // ¿?
 function $RF(el, radioGroup) {
     console.log("el:"+el+"  radioGroup: "+radioGroup); //PRUEBA
-    
     if($(el).type && $(el).type.toLowerCase() == 'radio') {
         radioGroup = $(el).name;
         el = $(el).form;
     } else if ($(el).tagName.toLowerCase() != 'form') {
         return false;
     }
-
     var checked = $(el).getInputs('radio', radioGroup).find(
         function(re) {return re.checked;}
     );

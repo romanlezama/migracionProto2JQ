@@ -287,21 +287,14 @@ function clearPage(){
 
 function $RF(el, radioGroup) {
     console.log("el:"+el+"  radioGroup: "+radioGroup); //PRUEBA
-    
     if($('#'+el).type && $("#"+el).type.toLowerCase() == 'radio') {
         radioGroup = $("#"+el).name;
         el = $("#"+el).form;
     } else if ($('#'+el)[0].tagName.toLowerCase() != 'form') {
         return false;
     }
-
-    //var checked = $("#formularioColor>input").val();
-
-    var checked = $("#"+el+">input")[0].find("checked"); /*.find(
-        function(re) {return re.checked;}
-    );   */
-    console.log("Todos los input: "+checked);
-    return (checked) ? checked.value : null;
+    var checked = $("#"+el+">input:checked");
+    return (checked) ? checked.val() : null;
 }
 
 
